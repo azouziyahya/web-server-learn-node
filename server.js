@@ -3,16 +3,7 @@
  */
 var express=require('express');
 var app=express();
-var middleware={
-    requireAuthentication:function (req,res,next) {
-        console.log('private route ! ');
-next()},
-    logger:function (req,res,next) {
-        console.log(req.method);
-        next();
-    }
-    };
-
+var middleware=require('./middleware');
 app.use(middleware.logger);
 app.get('/',function (req,res) {
    res.send('hello express');
